@@ -150,3 +150,33 @@ border-radius: 24px;
     color: #0A3871;
 
 }
+
+ @media screen and (max-width: 1000px) {
+
+    .content{
+        flex-direction: column;
+    }
+    .entrada-de-texto{
+        margin: auto;
+        width: auto;
+    }
+    #encriptador, #encriptador:focus{
+        font-size: 2em;
+
+    }
+    .tab, header, .botones{
+        width: auto;
+    }
+    .tab{
+        text-align: center;
+    }
+    .desencriptar{
+        margin-right: 20px;
+        margin-top: 1.5em;
+    }
+    .historial{
+        justify-content: center;
+        width: auto;
+        margin: 0 auto;
+    }
+ }
