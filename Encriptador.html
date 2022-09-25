@@ -23,8 +23,8 @@
                 <img src="recursos/advert.png" alt="">
                 <p>Solo letras minúsculas y sin acentos</p>
                 <div class="botones">
-                    <input type="button" value="Encriptar" class="encriptar">
-                    <input type="button" value="Desencriptar" class="desencriptar">
+                    <button value="Encriptar" class="encriptar" onclick="getValueInput()">Encriptar</button>
+                    <button name="" value="Desencriptar" class="desencriptar">Desencriptar</button>
                 </div>
             </div>
         </div>
@@ -37,4 +37,38 @@
         </div>
     </div>
 </body>
+
+<script>
+    const getValueInput = () =>{
+      var inputValue = document.getElementById("encriptador").value; 
+      document.getElementById("encriptador").innerHTML = inputValue; 
+      encriptar(inputValue);
+    }
+
+    function encriptar(texto){
+        let encriptado = "";
+       for(i=1; i<texto.length+1; i++){
+           if(texto.substring(i-1,i)!= "a" && "e" &&  "i" && "u" && "o"){
+                encriptado = encriptado+texto.substring(i-1,i);
+           }
+           if(texto.substring(i-1,i)== "a"){
+                encriptado = encriptado+"ai";
+           }
+           if(texto.substring(i-1,i)== "e"){
+                encriptado = encriptado+"enter";
+           }
+           if(texto.substring(i-1,i)== "i"){
+                encriptado = encriptado+"imes";
+           }
+           if(texto.substring(i-1,i)== "o"){
+                encriptado = encriptado+"ber";
+           }
+           if(texto.substring(i-1,i)== "u"){
+                encriptado = encriptado+"ufat";
+           }
+        }
+        document.write(encriptado);
+    }
+
+</script>
 </html>
