@@ -17,36 +17,62 @@
     </header>
     <div class="content">
         <div class="entrada-de-texto">
-            <input type="text" name="encriptador" id="encriptador" placeholder="Ingrese el texto aqui" autofocus>
+            <input type="text" name="encriptador" id="encriptador" placeholder="Ingrese el texto aqui" autofocus required>
             <div class="tab">
 
                 <img src="recursos/advert.png" alt="">
                 <p>Solo letras minúsculas y sin acentos</p>
                 <div class="botones">
                     <button value="Encriptar" class="encriptar" onclick="getValueInput()">Encriptar</button>
-                    <button name="" value="Desencriptar" class="desencriptar">Desencriptar</button>
+                    <button name="" value="Desencriptar" class="desencriptar" onclick="getValueInput2()">Desencriptar</button>
                 </div>
             </div>
         </div>
         <div class="historial">   
-            <div>
-                <img src="recursos/Muñeco.png" alt="">
-                <p>Ningún mensaje fue<br> encontrado</p>
-                <p>Ingresa el texto que desees encriptar o<br> desencriptar.</p>
+            <div  id="historial">
+                <li id="lista-encriptados">
+
+                </li>
+                <img src="recursos/Muñeco.png" alt="" id="holder1">
+                <p id="holder2">Ningún mensaje fue<br> encontrado</p>
+                <p id="holder3">Ingresa el texto que desees encriptar o<br> desencriptar.</p>
             </div>    
         </div>
     </div>
 </body>
 
 <script>
+    var frases = 0;
     const getValueInput = () =>{
       var inputValue = document.getElementById("encriptador").value; 
-      document.getElementById("encriptador").innerHTML = inputValue; 
-      encriptar(inputValue);
+      document.getElementById("encriptador").innerHTML = inputValue;
+      console.log(inputValue);
+      if(frases<1 && inputValue!=""){
+        eliminar();
+      }
+      if(inputValue!=""){
+        encriptar(inputValue);
+        frases+=1
+      } 
+      
+    }
+ 
+    const getValueInput2 = () =>{
+      var inputValue = document.getElementById("encriptador").value; 
+      document.getElementById("encriptador").innerHTML = inputValue;
+      if(frases<1 && inputValue!=""){
+        eliminar();
+      } 
+      if(inputValue!=""){
+        desencriptar(inputValue);
+      frases+=1
+      }
+      
     }
 
     function encriptar(texto){
         let encriptado = "";
+        
        for(i=1; i<texto.length+1; i++){
            if(texto.substring(i-1,i)!= "a" && "e" &&  "i" && "u" && "o"){
                 encriptado = encriptado+texto.substring(i-1,i);
@@ -67,8 +93,45 @@
                 encriptado = encriptado+"fat";
            }
         }
-        document.write(encriptado);
+  
+        añadir(encriptado);
     }
 
+    function desencriptar(texto){
+
+        let matrizEncrip = [["a","ai"],["e","enter"],["i","imes"],["o","ober"],["u","ufat"]];
+        for (i=0 ; i < matrizEncrip.length ; i++){
+            if(texto.includes(matrizEncrip[i][1])){
+                texto = texto.replaceAll(matrizEncrip[i][1],matrizEncrip[i][0]);
+            }
+        } 
+    
+        añadir(texto);
+           
+    }
+
+    function eliminar(){
+        let d = document.getElementById("historial");
+        let d_child = document.getElementById("holder1");
+        let d_child2 = document.getElementById("holder2");
+        let d_child3 = document.getElementById("holder3");
+        let node = d.removeChild(d_child);
+        let node2 = d.removeChild(d_child2);
+        let node3 = d.removeChild(d_child3);
+
+    }
+
+    function añadir(textoEncriptado){
+        const li = document.createElement("li");
+        li.setAttribute("class", "item-encriptado");
+        li.innerHTML =textoEncriptado;
+        li.onclick("copiar");
+
+        const $contenedor = document.getElementById("historial");
+        $contenedor.append(li);
+    }
+    function copiar(){
+
+    }
 </script>
 </html>
