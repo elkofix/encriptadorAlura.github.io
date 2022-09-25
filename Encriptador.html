@@ -47,7 +47,7 @@
       var inputValue = document.getElementById("encriptador").value; 
       document.getElementById("encriptador").innerHTML = inputValue;
       console.log(inputValue);
-      if (frases<31){
+     
 
       
         if(frases<1 && inputValue!=""){
@@ -58,12 +58,12 @@
             frases+=1
         } 
       }
-    }
+    
  
     const getValueInput2 = () =>{
       var inputValue = document.getElementById("encriptador").value; 
       document.getElementById("encriptador").innerHTML = inputValue;
-      if(frases<31){
+      
          if(frases<1 && inputValue!=""){
               eliminar();
           } 
@@ -72,7 +72,7 @@
         frases+=1
         }
       }
-    }
+   
 
     function encriptar(texto){
         texto= texto.toLowerCase();
