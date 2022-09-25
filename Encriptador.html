@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Encriptador Alura</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <header>
+        <img src="recursos/Vector.png" class="imagen-encabezado">
+    </header>
+    <div class="content">
+        <div class="entrada-de-texto">
+            <input type="text" name="encriptador" id="encriptador" placeholder="Ingrese el texto aqui" autofocus>
+            <div class="tab">
+
+                <img src="recursos/advert.png" alt="">
+                <p>Solo letras minúsculas y sin acentos</p>
+                <div class="botones">
+                    <input type="button" value="Encriptar" class="encriptar">
+                    <input type="button" value="Desencriptar" class="desencriptar">
+                </div>
+            </div>
+        </div>
+        <div class="historial">   
+            <div>
+                <img src="recursos/Muñeco.png" alt="">
+                <p>Ningún mensaje fue<br> encontrado</p>
+                <p>Ingresa el texto que desees encriptar o<br> desencriptar.</p>
+            </div>    
+        </div>
+    </div>
 </body>
 </html>
