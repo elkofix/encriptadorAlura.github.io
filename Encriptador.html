@@ -47,32 +47,42 @@
       var inputValue = document.getElementById("encriptador").value; 
       document.getElementById("encriptador").innerHTML = inputValue;
       console.log(inputValue);
-      if(frases<1 && inputValue!=""){
-        eliminar();
-      }
-      if(inputValue!=""){
-        encriptar(inputValue);
-        frases+=1
-      } 
+      if (frases<31){
+
       
+        if(frases<1 && inputValue!=""){
+            eliminar();
+        }
+        if(inputValue!=""){
+            encriptar(inputValue);
+            frases+=1
+        } 
+      }
     }
  
     const getValueInput2 = () =>{
       var inputValue = document.getElementById("encriptador").value; 
       document.getElementById("encriptador").innerHTML = inputValue;
-      if(frases<1 && inputValue!=""){
-        eliminar();
-      } 
-      if(inputValue!=""){
-        desencriptar(inputValue);
-      frases+=1
+      if(frases<31){
+         if(frases<1 && inputValue!=""){
+              eliminar();
+          } 
+         if(inputValue!=""){
+            desencriptar(inputValue);
+        frases+=1
+        }
       }
-      
     }
 
     function encriptar(texto){
+        texto= texto.toLowerCase();
         let encriptado = "";
-        
+        let matrizAcento = [["a","á"],["e","é"],["i","í"],["o","ó"],["u","ú"]];
+        for (i=0 ; i < matrizAcento.length ; i++){
+            if(texto.includes(matrizAcento[i][1])){
+                texto = texto.replaceAll(matrizAcento[i][1],matrizAcento[i][0]);
+            }
+        } 
        for(i=1; i<texto.length+1; i++){
            if(texto.substring(i-1,i)!= "a" && "e" &&  "i" && "u" && "o"){
                 encriptado = encriptado+texto.substring(i-1,i);
@@ -98,7 +108,13 @@
     }
 
     function desencriptar(texto){
-
+        texto = texto.toLowerCase();
+        let matrizAcento = [["a","á"],["e","é"],["i","í"],["o","ó"],["u","ú"]];
+        for (i=0 ; i < matrizAcento.length ; i++){
+            if(texto.includes(matrizAcento[i][1])){
+                texto = texto.replaceAll(matrizAcento[i][1],matrizAcento[i][0]);
+            }
+        } 
         let matrizEncrip = [["a","ai"],["e","enter"],["i","imes"],["o","ober"],["u","ufat"]];
         for (i=0 ; i < matrizEncrip.length ; i++){
             if(texto.includes(matrizEncrip[i][1])){
@@ -125,13 +141,11 @@
         const li = document.createElement("li");
         li.setAttribute("class", "item-encriptado");
         li.innerHTML =textoEncriptado;
-        li.onclick("copiar");
+        
 
         const $contenedor = document.getElementById("historial");
         $contenedor.append(li);
     }
-    function copiar(){
 
-    }
 </script>
 </html>
